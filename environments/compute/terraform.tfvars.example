@@ -1,0 +1,6 @@
+token               = "your-oauth-token"
+cloud_id            = "your-cloud-id"
+folder_id           = "your-folder-id"
+image_id            = "fd8xxxxxxxxxxxxx"  # Ubuntu 20.04 LTS
+ssh_user            = "ubuntu"
+ssh_public_key_path = "~/.ssh/id_rsa.pub"
