@@ -108,7 +108,7 @@ resource "yandex_kubernetes_node_group" "node_groups" {
         size = fixed_scale.value.size
       }
     }
-    
+
     dynamic "auto_scale" {
       for_each = each.value.scale_policy.auto != null ? [each.value.scale_policy.auto] : []
       content {

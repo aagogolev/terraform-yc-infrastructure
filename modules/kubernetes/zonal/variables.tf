@@ -86,18 +86,18 @@ variable "node_groups" {
     name        = string
     description = optional(string, "Node group for zonal cluster")
     platform_id = optional(string, "standard-v2")
-    memory     = optional(number, 8)
-    cores      = optional(number, 4)
-    disk_type  = optional(string, "network-hdd")
-    disk_size  = optional(number, 64)
-    nat        = optional(bool, false)
+    memory      = optional(number, 8)
+    cores       = optional(number, 4)
+    disk_type   = optional(string, "network-hdd")
+    disk_size   = optional(number, 64)
+    nat         = optional(bool, false)
     scale_policy = object({
       fixed = optional(object({
         size = number
       }))
       auto = optional(object({
-        min = number
-        max = number
+        min     = number
+        max     = number
         initial = number
       }))
     })

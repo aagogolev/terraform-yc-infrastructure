@@ -8,15 +8,15 @@ module "kubernetes_cluster" {
   zone         = var.zone
 
   auto_upgrade = true
-  
+
   ssh_username = "admin"
   ssh_key      = file(var.ssh_key)
 
   node_groups = {
     fixed = {
-      name        = "fixed-group"
-      memory      = 8
-      cores       = 4
+      name   = "fixed-group"
+      memory = 8
+      cores  = 4
       scale_policy = {
         fixed = {
           size = 3
@@ -24,9 +24,9 @@ module "kubernetes_cluster" {
       }
     }
     auto = {
-      name        = "auto-group"
-      memory      = 16
-      cores       = 8
+      name   = "auto-group"
+      memory = 16
+      cores  = 8
       scale_policy = {
         auto = {
           min     = 1

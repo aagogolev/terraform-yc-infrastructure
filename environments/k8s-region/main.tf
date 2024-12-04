@@ -1,10 +1,10 @@
 module "kubernetes_cluster" {
   source = "../../modules/kubernetes/regional"
 
-  folder_id      = var.folder_id
-  cluster_name   = "production-regional"
-  network_id     = var.network_id
-  
+  folder_id    = var.folder_id
+  cluster_name = "production-regional"
+  network_id   = var.network_id
+
   # Указываем подсети для всех зон доступности
   subnet_ids = {
     "ru-central1-a" = var.subnet_a_id
@@ -41,7 +41,7 @@ module "kubernetes_cluster" {
   ssh_key      = file(var.ssh_key_path)
 
   # Настраиваем группы узлов
-    node_groups = {
+  node_groups = {
     "fixed_group" = {
       name        = "fixed"
       description = "Fixed size node group"
@@ -60,7 +60,7 @@ module "kubernetes_cluster" {
     "auto_group" = {
       name        = "auto"
       description = "Auto scalable node group"
-      zones       = ["ru-central1-a"]  # Только одна зона для автомасштабирования
+      zones       = ["ru-central1-a"] # Только одна зона для автомасштабирования
       memory      = 16
       cores       = 8
       disk_type   = "network-ssd"

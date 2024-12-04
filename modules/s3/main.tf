@@ -22,9 +22,9 @@ resource "yandex_storage_bucket" "bucket" {
   access_key = yandex_iam_service_account_static_access_key.sa-static-key.access_key
   secret_key = yandex_iam_service_account_static_access_key.sa-static-key.secret_key
 
-  max_size                = var.max_size != 0 ? var.max_size : null
-  default_storage_class   = var.default_storage_class
-  force_destroy          = var.force_destroy
+  max_size              = var.max_size != 0 ? var.max_size : null
+  default_storage_class = var.default_storage_class
+  force_destroy         = var.force_destroy
 
   versioning {
     enabled = var.versioning
