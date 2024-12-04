@@ -58,6 +58,8 @@ jobs:
           modules/kubernetes/regional
           modules/kubernetes/zonal
           modules/s3
+          modules/network
+          modules/compute
         output-file: README.md
         output-method: inject
         git-push: true
