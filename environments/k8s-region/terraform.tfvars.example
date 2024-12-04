@@ -1,0 +1,8 @@
+token               = "your-oauth-token"
+cloud_id            = "your-cloud-id"
+folder_id           = "your-folder-id"
+network_id          = "your-network-id"
+subnet_a_id         = "your-subnet-a-id"
+subnet_b_id         = "your-subnet-b-id"
+subnet_d_id         = "your-subnet-d-id"
+ssh_key_path        = "your-ssh-pub-key"

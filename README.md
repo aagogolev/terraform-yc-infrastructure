@@ -12,39 +12,55 @@
 ## Структура проекта
 
 ```sh
+.
 ├── environments
-│   ├── dev
+│   ├── compute
 │   │   ├── main.tf
 │   │   ├── outputs.tf
-│   │   ├── terraform.tfvars
-│   │   ├── variables.tf
-│   │   └── versions.tf
-│   └── stage
+│   │   ├── provider.tf
+│   │   ├── terraform.tfvars.example
+│   │   └── variables.tf
+│   ├── k8s-zonal
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   ├── provider.tf
+│   │   ├── terraform.tfvars.example
+│   │   └── variables.tf
+│   ├── network
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   ├── provider.tf
+│   │   ├── terraform.tfvars.example
+│   │   └── variables.tf
 ├── modules
 │   ├── compute
 │   │   ├── main.tf
 │   │   ├── outputs.tf
 │   │   ├── variables.tf
 │   │   └── versions.tf
-│   ├── databases
 │   ├── kubernetes
+│   │   ├── regional
+│   │   └── zonal
+│   │       ├── main.tf
+│   │       ├── outputs.tf
+│   │       ├── variables.tf
+│   │       └── versions.tf
 │   ├── network
 │   │   ├── main.tf
 │   │   ├── outputs.tf
 │   │   ├── variables.tf
 │   │   └── versions.tf
-│   └── storage
-└── README.md
+├── README.md
 ```
 
 ## Быстрый старт
 
 1. Клонируйте репозиторий
-2. Настройте переменные в `environments/prod/terraform.tfvars`
+2. cd environments/`"resource"`
+2. Настройте переменные `cp terraform.tfvars.example terraform.tfvars`
 3. Выполните:
 
 ```bash
-cd environments/prod
 terraform init
 terraform plan
 terraform apply

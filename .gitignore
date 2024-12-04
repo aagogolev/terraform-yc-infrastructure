@@ -5,3 +5,4 @@ terraform.tfstate.backup
 .terraform.lock.hclc
 .terraform
 .terraform.lock.hcl
+okd
