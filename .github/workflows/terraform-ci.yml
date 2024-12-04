@@ -27,7 +27,9 @@ jobs:
 
     - name: Install tfsec
       run: |
-        curl -s https://raw.githubusercontent.com/aquasecurity/tfsec/master/scripts/install_linux.sh | bash
+        wget -q -O tfsec https://github.com/aquasecurity/tfsec/releases/download/v1.28.11/tfsec-linux-amd64
+        chmod +x tfsec
+        sudo mv tfsec /usr/local/bin/
 
     - name: Terraform Format Check
       run: terraform fmt -check -recursive
