@@ -56,8 +56,8 @@ jobs:
         
     - name: Run Terrascan
       run: |
-        terrascan scan -i terraform -d modules/
-        terrascan scan -i terraform -d environments/
+        terrascan scan -i terraform -d ./modules
+        terrascan scan -i terraform -d ./environments
 
     - name: Generate Terraform Docs
       uses: terraform-docs/gh-actions@v1.0.0
