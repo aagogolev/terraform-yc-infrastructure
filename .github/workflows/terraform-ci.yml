@@ -57,7 +57,7 @@ jobs:
         working-dir: |
           modules/kubernetes/regional
           modules/kubernetes/zonal
-          modules/storage/s3
+          modules/s3
         output-file: README.md
         output-method: inject
         git-push: true
