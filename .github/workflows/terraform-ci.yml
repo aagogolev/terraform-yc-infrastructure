@@ -61,3 +61,5 @@ jobs:
         output-file: README.md
         output-method: inject
         git-push: true
+      env:
+        GITHUB_TOKEN: ${{ secrets.TF_TOKEN }}
