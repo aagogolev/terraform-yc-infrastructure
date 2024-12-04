@@ -25,11 +25,11 @@ jobs:
       with:
         tflint_version: v0.44.1
 
-    - name: Install tfsec
+    - name: Install Terrascan
       run: |
-        wget -q -O tfsec https://github.com/aquasecurity/tfsec/releases/download/v1.28.11/tfsec-linux-amd64
-        chmod +x tfsec
-        sudo mv tfsec /usr/local/bin/
+        curl -L "$(curl -s https://api.github.com/repos/tenable/terrascan/releases/latest | grep -o -E "https://.+?_Linux_x86_64.tar.gz")" > terrascan.tar.gz
+        tar -xf terrascan.tar.gz terrascan && rm terrascan.tar.gz
+        sudo install terrascan /usr/local/bin && rm terrascan
 
     - name: Terraform Format Check
       run: terraform fmt -check -recursive
@@ -57,8 +57,14 @@ jobs:
           cd -
         done
 
-    - name: Run tfsec
-      run: tfsec .
+    - name: Run Checkov
+      uses: bridgecrewio/checkov-action@master
+      with:
+        directory: .
+        framework: terraform
+        
+    - name: Run Terrascan
+      run: terrascan scan -i terraform
 
     - name: Generate Terraform Docs
       uses: terraform-docs/gh-actions@v1.0.0
