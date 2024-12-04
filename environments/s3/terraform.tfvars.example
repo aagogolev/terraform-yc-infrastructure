@@ -1,0 +1,4 @@
+token               = "your-oauth-token"
+cloud_id            = "your-cloud-id"
+folder_id           = "your-folder-id"
+
