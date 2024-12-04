@@ -54,11 +54,16 @@ jobs:
           cd -
         done
         
+    - name: Checkout
+      uses: actions/checkout@v3
+      with:
+        fetch-depth: 0
+
     - name: Run Terrascan
       run: |
         ls -la
-        pwd
-        terrascan scan -i terraform -d $(pwd)
+        terrascan scan -i terraform -d .
+
 
     - name: Generate Terraform Docs
       uses: terraform-docs/gh-actions@v1.0.0
