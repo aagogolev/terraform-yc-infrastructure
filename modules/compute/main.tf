@@ -13,10 +13,10 @@ resource "yandex_compute_disk" "additional_disk" {
     ]) : pair.key => pair.value
   }
 
-  name        = "${each.value.vm_name}-additional-disk-${each.key}"
-  type        = each.value.type
-  zone        = each.value.zone
-  size        = each.value.size
+  name = "${each.value.vm_name}-additional-disk-${each.key}"
+  type = each.value.type
+  zone = each.value.zone
+  size = each.value.size
 }
 
 resource "yandex_compute_instance" "vm" {

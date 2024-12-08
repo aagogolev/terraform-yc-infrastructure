@@ -16,7 +16,7 @@ module "compute" {
       cores     = 2
       memory    = 4
       disk_size = 20
-      labels    = {
+      labels = {
         environment = "test"
       }
 
