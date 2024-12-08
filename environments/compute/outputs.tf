@@ -1,10 +1,14 @@
-output "bastion_public_ip" {
-  description = "Bastion host public IP"
-  value       = module.bastion.external_ips[0]
+output "instance_ids" {
+  description = "IDs of created instances"
+  value       = module.compute.instance_ids
 }
 
-output "private_instances_ips" {
-  description = "Private instances internal IPs"
-  value       = module.private_instances.internal_ips
+output "instance_external_ip" {
+  description = "Public IP addresses of instances"
+  value       = module.compute.external_ips
 }
 
+output "instance_internal_ip" {
+  description = "Private IP addresses of instances"
+  value       = module.compute.internal_ips
+}

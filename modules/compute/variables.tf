@@ -1,74 +1,40 @@
-variable "name_prefix" {
+variable "instances" {
+  description = "Список виртуальных машин для создания"
+  type = map(object({
+    name                = string
+    zone                = string
+    image_id            = string
+    cores               = number
+    memory              = number
+    disk_size           = number
+    nat                 = optional(bool, false)
+    preemptible         = optional(bool, false)
+    description         = optional(string, "")
+    platform_id         = optional(string, "standard-v1")
+    core_fraction       = optional(number, 100)
+    disk_type           = optional(string, "network-ssd")
+    labels              = optional(map(string), {})
+    additional_disks    = optional(list(object({
+      size = number
+      type = string
+    })), [])
+    network_interfaces  = list(object({
+      subnet_id = string
+      nat       = optional(bool, false)
+    }))
+    service_account_id  = optional(string, null)
+    placement_group_id  = optional(string, null)
+  }))
+}
+
+variable "ssh_username" {
+  description = "Имя пользователя для SSH-доступа"
   type        = string
-  description = "Prefix for instance names"
+  default     = "yc-user"
 }
 
-variable "instance_count" {
-  type        = number
-  description = "Number of instances to create"
-  default     = 1
-}
-
-variable "platform_id" {
+variable "ssh_key_path" {
+  description = "Путь к публичному SSH ключу"
   type        = string
-  description = "Platform ID (standard-v1, standard-v2, standard-v3)"
-  default     = "standard-v3"
-}
-
-variable "zone" {
-  type        = string
-  description = "Yandex Cloud Zone"
-  default     = "ru-central1-a"
-}
-
-variable "resources" {
-  type = object({
-    cores         = number
-    memory        = number
-    core_fraction = number
-  })
-  description = "Computing resources configuration"
-  default = {
-    cores         = 2
-    memory        = 4
-    core_fraction = 100
-  }
-}
-
-variable "image_id" {
-  type        = string
-  description = "Boot disk image ID"
-}
-
-variable "boot_disk_size" {
-  type        = number
-  description = "Boot disk size in GB"
-  default     = 20
-}
-
-variable "boot_disk_type" {
-  type        = string
-  description = "Boot disk type (network-hdd, network-ssd)"
-  default     = "network-ssd"
-}
-
-variable "subnet_id" {
-  type        = string
-  description = "Subnet ID for network interface"
-}
-
-variable "nat" {
-  type        = bool
-  description = "Provide a public address"
-  default     = true
-}
-
-variable "ssh_user" {
-  type        = string
-  description = "SSH user for instance access"
-}
-
-variable "ssh_public_key_path" {
-  type        = string
-  description = "Path to SSH public key file"
+  default     = "~/.ssh/id_rsa.pub"
 }
